@@ -6,9 +6,4 @@
  * Time: 9:30 PM
  */
 
-include_once ('MyDb.php');
-
-
-$database = new MyDb();
-
-$database->dbConnect();
+header("location: home.php");

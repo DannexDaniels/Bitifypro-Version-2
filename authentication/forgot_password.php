@@ -2,9 +2,10 @@
 include ("../template/header.php");
 require_once 'Authentication.php';
 
-$auth = new Authentication();
-$auth->resetPass($_POST['email']);
-
+if (!empty($_POST)):
+    $auth = new Authentication();
+    $auth->resetPass($_POST);
+endif;
 ?>
 <body class="bg-dark">
 <div class="container">
@@ -30,5 +31,5 @@ $auth->resetPass($_POST['email']);
 </div>
 
 <?php
-include ("./template/ending.php");
+include ("../template/ending.php");
 ?>

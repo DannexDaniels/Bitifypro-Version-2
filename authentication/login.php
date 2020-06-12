@@ -1,12 +1,20 @@
 <?php
 include ("../template/header.php");
+require_once 'Authentication.php';
+
+if (!empty($_POST)):
+
+    print_r($_POST);
+    $auth = new Authentication();
+    $auth->loginUser($_POST);
+endif;
 ?>
 <body class="bg-dark">
 <div class="container">
     <div class="card card-login mx-auto mt-5">
         <div class="card-header">Login</div>
         <div class="card-body">
-            <form action="/authentication/login" method="post">
+            <form action="" method="post">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Username</label>
                     <input class="form-control" name="uname" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Enter Username" required>

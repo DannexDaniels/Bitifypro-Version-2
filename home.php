@@ -1,3 +1,7 @@
+<?php
+include ('./template/home_header.php');
+?>
+
 <!--header area start-->
 <div class="header-area wow fadeInDown header-absolate" id="nav" data-0="position:fixed;" data-top-top="position:fixed;top:0;" data-edge-strategy="set">
     <div class="container">
@@ -24,10 +28,10 @@
                 </div>
             </div>
             <div class="col-2 col-lg-2">
-                <a href="<?php echo base_url('register'); ?>" class="logibtn gradient-btn">Register</a>
+                <a href="./authentication/register.php" class="logibtn gradient-btn">Register</a>
             </div>
             <div class="col-2 col-lg-2">
-                <a href="<?php echo base_url('login'); ?>" class="logibtn gradient-btn">login</a>
+                <a href="./authentication/login.php" class="logibtn gradient-btn">login</a>
             </div>
 
         </div>
@@ -55,14 +59,14 @@
                         </ol>
                     </div>
                     <div class="welcome-btn">
-                        <a href="<?php echo base_url('register'); ?>" class="gradient-btn v2 mr-20">Join Us Now</a>
+                        <a href="./authentication/register.php" class="gradient-btn v2 mr-20">Join Us Now</a>
                         <!-- <a href="#" class="gradient-btn v2">Download Whitepaper</a> -->
                     </div>
                 </div>
             </div>
             <div class="col-12 col-md-6">
                 <div class="welcome-img">
-                    <img src="<?php echo base_url('img/welcome-img.png');?>" alt="">
+                    <img src="./img/welcome-img.png" alt="">
                 </div>
             </div>
         </div>
@@ -84,20 +88,20 @@
         </div>
         <div class="row">
             <div class="col-xl-4">
-                <img src="<?php echo base_url('img/bitcoin_mining2.png');?>" alt="">
+                <img src="./img/bitcoin_mining2.png" alt="">
             </div>
             <div class="col-xl-4">
-                <img src="<?php echo base_url('img/forex_trading2.png');?>" alt="">
+                <img src="./img/forex_trading2.png" alt="">
             </div>
             <div class="col-xl-4">
-                <img src="<?php echo base_url('img/crypto_trading2.png');?>" alt="">
+                <img src="./img/crypto_trading2.png" alt="">
             </div>
         </div>
         <div class="space-90"></div>
         <div class="row">
             <div class="col-12 col-md-6">
                 <div class="about-mid-img">
-                    <img src="<?php echo base_url('img/about-left.png');?>" alt="">
+                    <img src="./img/about-left.png" alt="">
                 </div>
             </div>
             <div class="col-12 col-md-6 align-self-center">
@@ -110,10 +114,14 @@
                         a great income from these activities. Clients who have invested in us have not been disappointed. Join us today and be one of our happy clients.</p>
                 </div>
                 <div class="space-30"></div>
-                <a href="<?php echo base_url('register'); ?>" class="gradient-btn v2 about-btn">  Register with us now</a>
+                <a href="./authentication/register.php" class="gradient-btn v2 about-btn">  Register with us now</a>
             </div>
         </div>
     </div>
     <div class="space-90"></div>
 </div>
 <!--about area end-->
+
+<?php
+include ('./template/home_footer.php');
+?>

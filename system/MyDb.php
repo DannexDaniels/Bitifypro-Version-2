@@ -65,5 +65,19 @@ class MyDb
             $this->output->alert("There was a problem registering you. kindly try again or contact us if the problem persists...");
         endif;
     }
+
+    public function findUser($user){
+        $sql = "SELECT * FROM users WHERE username = '".$user."'";
+
+        $result = mysqli_query($this->connect, $sql);
+
+        //print_r("query is ".$sql." which gave this result".$result);
+
+        if (mysqli_num_rows($result) > 0) {
+            return mysqli_fetch_assoc($result);
+        } else {
+            return array();
+        }
+    }
 }
 

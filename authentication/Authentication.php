@@ -23,7 +23,7 @@ class Authentication extends Outputs
     }
 
     public function resetPass($email){
-        print_r($email);
+        $this->alert("module still under development");
     }
 
     public function registerUser($user){
@@ -32,6 +32,20 @@ class Authentication extends Outputs
         else:
             $this->database->addUser($user);
         endif;
+    }
+
+    public function loginUser($user){
+
+        $result = $this->database->findUser($user['uname']);
+
+        if (empty($result)):
+            $this->alert("User not found. Please create an account","register.php");
+        elseif ($result['password'] === $user['pass']):
+            $this->alert("Login successfull","forgot_password.php");
+        else:
+            $this->alert("You have entered a wrong password");
+        endif;
+
     }
 
 
