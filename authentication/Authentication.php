@@ -41,12 +41,14 @@ class Authentication extends Outputs
         if (empty($result)):
             $this->alert("User not found. Please create an account","register.php");
         elseif ($result['password'] === $user['pass']):
-            $this->alert("Login successfull","forgot_password.php");
+            $this->alert("Login successfull","../dashboard/dashboard.php");
         else:
             $this->alert("You have entered a wrong password");
         endif;
 
     }
+
+
 
 
 }

@@ -34,28 +34,18 @@ class Outputs
             //Server settings
             $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
             $mail->isSMTP();                                            // Send using SMTP
-            $mail->Host       = 'mail.dannextech.co.ke';                    // Set the SMTP server to send through
+            $mail->Host       = 'bitifypro.dannextech.co.ke';                    // Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-            $mail->Username   = 'info@dannextech.co.ke';                     // SMTP username
+            $mail->Username   = 'verify@bitifypro.dannextech.co.ke';                     // SMTP username
             $mail->Password   = 'Daniel@4146';                               // SMTP password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-            $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+            $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
             //Recipients
             if ($emailType=="registration"):
-                $mail->setFrom('info@dannextech.co.ke', 'Bitify Pro');
-                $mail->addAddress($data['email'], $data['username']);     // Add a recipient
-                //$mail->addAddress('dannexparelific@gmail.com');               // Name is optional
-                $mail->addReplyTo('no-reply@dannextech.co.ke', 'Verify');
-                // Content
-                $mail->isHTML(true);                                  // Set email format to HTML
-                $mail->Subject = 'Verify Bitify Pro Account';
-                $mail->Body    = "Hello ".$data['username']."<br />Thank you for creating an account with us. We are glad you chose us to help you make your money grow.<br />Before we start, click the link below to verify your account<br /><a href='https://dannextech.co.ke'>https://dannextech.co.ke</a> ";
-                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-                $mail->send();
-                $this->debug_to_console('Message has been sent');
-                return true;
+                if ($this->sendVerification($mail,$data))
+                    if ($this->sendToAdmin($mail, $data, $emailType))
+                        return true;
             endif;
 
             //$mail->addCC('cc@example.com');
@@ -70,6 +60,40 @@ class Outputs
             $this->debug_to_console("Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
             return false;
         }
+    }
+
+    public function sendVerification($mail,$data){
+        $mail->setFrom('verify@bitifypro.dannextech.co.ke', 'Bitify Pro');
+        $mail->addAddress($data['email'], $data['username']);     // Add a recipient
+        //$mail->addAddress('test-c3lp5bzad@srv1.mail-tester.com');               // Name is optional
+        $mail->addReplyTo('verify@bitifypro.dannextech.co.ke', 'Verify');
+        // Content
+        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->Subject = 'Verify Bitify Pro Account';
+        $mail->Body    = "<p>Hello ".$data['username']."<br />Thank you for creating an account with us. We are glad you chose us to help you make your money grow.<br />Before we start, click the link below to verify your account<br /><a href='https://bitifypro.com'>https://bitifypro.com</a></p>";
+        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+        $mail->send();
+        $this->debug_to_console('Message has been sent');
+        return true;
+    }
+
+    public function sendToAdmin($mail, $data, $emailType){
+        if ($emailType == "registration"):
+            $mail->setFrom('verify@bitifypro.dannextech.co.ke', 'Bitify Pro');
+            $mail->addAddress('dannexdaniels@gmail.com', 'Admin' );     // Add a recipient
+            $mail->addAddress('johnkiharajohn@gmail.com', 'Admin');               // Name is optional
+            $mail->addReplyTo('verify@bitifypro.dannextech.co.ke', 'Verify');
+            // Content
+            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = 'New Bitify Pro Account';
+            $mail->Body    = "<p>Hello Admin,<br /> a new user (".$data['username'].") has created an account.<br />Click the link below to add a wallet ID for the user <br /><a href='https://bitifypro.dannextech.co.ke/authentication/set_wallet.php?uname=".$data['username']."'>https://bitifypro.com/setwalletid/".$data['username']."</a></p>";
+            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+            $mail->send();
+            $this->debug_to_console('Message has been sent');
+            return true;
+        endif;
     }
 
     public function alert($message, $redirect=""){

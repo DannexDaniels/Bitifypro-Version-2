@@ -1,13 +1,13 @@
-<!-- Navigation-->
+<!--Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="<?php echo base_url('dashboard')?>">Bitify Pro Dashboard</a>
+    <a class="navbar-brand" href="../dashboard/dashboard.php">Bitify Pro Dashboard</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Home">
-                <a class="nav-link" href="<?php echo base_url('dashboard')?>">
+                <a class="nav-link" href="dashboard.php">
                     <i class="fa fa-fw fa-dashboard"></i>
                     <span class="nav-link-text">Home</span>
                 </a>
@@ -20,13 +20,13 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapse_account">
                     <li>
-                        <a href="<?php echo base_url('subscriptions')?>"><i class="fa fa-fw fa-dollar"></i> Subscriptions</a>
+                        <a href="../dashboard/subscriptions.php"><i class="fa fa-fw fa-dollar"></i> Subscriptions</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('referrals')?>"><i class="fa fa-fw fa-users"></i> Referrals</a>
+                        <a href="../dashboard/referrals.php"><i class="fa fa-fw fa-users"></i> Referrals</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('profile')?>"><i class="fa fa-fw fa-user-circle"></i> Profile</a>
+                        <a href="../dashboard/profile.php"><i class="fa fa-fw fa-user-circle"></i> Profile</a>
                     </li>
                 </ul>
             </li>
@@ -37,15 +37,15 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapse_transaction">
                     <li>
-                        <a href="<?php echo base_url('earnings')?>"><i class="fa fa-fw fa-money"></i> Earnings</a>
+                        <a href="../dashboard/earnings.php"><i class="fa fa-fw fa-money"></i> Earnings</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('withdrawals')?>"><i class="fa fa-fw fa-tasks"></i> Withdrawals</a>
+                        <a href="../dashboard/withdrawals.php"><i class="fa fa-fw fa-tasks"></i> Withdrawals</a>
                     </li>
                 </ul>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Withdraw">
-                <a class="nav-link" href="<?php echo base_url('withdraw')?>">
+                <a class="nav-link" href="withdraw.php">
                     <i class="fa fa-fw fa-google-wallet"></i>
                     <span class="nav-link-text">Withdraw</span>
                 </a>

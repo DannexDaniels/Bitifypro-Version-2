@@ -1,10 +1,13 @@
-
+<?php
+include('../template/header.php');
+include('../template/navigation.php')
+?>
 <div class="content-wrapper">
     <div class="container-fluid">
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="<?php echo base_url('dashboard')?>">Dashboard</a>
+                <a href="/dashboard/dashboard.php">Dashboard</a>
             </li>
             <li class="breadcrumb-item active">Withdraw</li>
         </ol>
@@ -15,3 +18,7 @@
             </div>
         </div>
     </div>
+<?php
+include ('../template/footer.php');
+include ('../template/ending.php')
+?>

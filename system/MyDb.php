@@ -56,8 +56,7 @@ class MyDb
             if ($this->output->sendMail("registration",$user))
                 $this->output->alert("Account has been created successfully","login.php");
             else
-                print_r("Somehting si worng");
-                //$this->output->alert("Something is wrong...");
+                $this->output->alert("Something is wrong...");
             exit();
         elseif (mysqli_errno($this->connect) == 1062) :
             $this->output->alert("The username or email address is already being used by someone else...");
@@ -78,6 +77,26 @@ class MyDb
         } else {
             return array();
         }
+    }
+
+    public function getAllUsers(){
+
+        $sql = "SELECT * FROM users";
+
+        $result = mysqli_query($this->connect, $sql);
+
+        return $result;
+    }
+
+    public function setWalletId($data){
+        $sql = "UPDATE users SET walletid='".$data['wallet']."' WHERE username='".$data['username']."'";
+
+        if (mysqli_query($this->connect, $sql)):
+            $this->output->alert( "Wallet has been set successfully","../dashboard/profile.php");
+        else:
+            $this->output->alert("Error updating record: " . mysqli_error($this->connect));
+        endif;
+
     }
 }
 
